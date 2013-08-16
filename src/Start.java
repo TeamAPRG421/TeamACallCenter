@@ -12,7 +12,11 @@ import javax.swing.JLabel;
 import javax.swing.JTable;
 import javax.swing.JScrollPane;
 import javax.swing.JButton;
+import javax.swing.table.DefaultTableModel;
+
 import java.awt.Font;
+import logic.*;
+import Data.*;
 
 
 public class Start {
@@ -52,6 +56,12 @@ public class Start {
 	 * Initialize the contents of the frame.
 	 */
 	private void initialize() {
+		
+		
+		DefaultTableModel model = Util.CreateTableHeader(
+				new String[]{"id", "Customer Name","Start Time","End Time", "Note"}
+			);
+		
 		frame = new JFrame();
 		frame.setBounds(100, 100, 786, 471);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -98,7 +108,7 @@ public class Start {
 		scrollPane.setBounds(191, 66, 554, 324);
 		frame.getContentPane().add(scrollPane);
 		
-		table = new JTable();
+		table = new JTable(model);
 		table.setLocation(78, 0);
 		table.setFillsViewportHeight(true);
 		scrollPane.setViewportView(table);
