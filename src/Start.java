@@ -12,6 +12,7 @@ import javax.swing.JLabel;
 import javax.swing.JTable;
 import javax.swing.JScrollPane;
 import javax.swing.JButton;
+import java.awt.Font;
 
 
 public class Start {
@@ -22,6 +23,7 @@ public class Start {
 	private JTextField txtEndTime;
 	private JTextField txtNote;
 	private JTable table;
+	private JTextField textField;
 
 	/**
 	 * Launch the application.
@@ -51,58 +53,69 @@ public class Start {
 	 */
 	private void initialize() {
 		frame = new JFrame();
-		frame.setBounds(100, 100, 675, 423);
+		frame.setBounds(100, 100, 786, 471);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 		
 		txtCustomerName = new JTextField();
-		txtCustomerName.setBounds(15, 58, 146, 22);
+		txtCustomerName.setBounds(11, 112, 146, 22);
 		frame.getContentPane().add(txtCustomerName);
 		txtCustomerName.setColumns(10);
 		
 		JLabel lblCustomerName = new JLabel("Customer Name:");
-		lblCustomerName.setBounds(36, 26, 104, 28);
+		lblCustomerName.setBounds(32, 83, 104, 28);
 		frame.getContentPane().add(lblCustomerName);
 		
 		txtStartTime = new JTextField();
-		txtStartTime.setBounds(15, 115, 146, 22);
+		txtStartTime.setBounds(11, 160, 146, 22);
 		frame.getContentPane().add(txtStartTime);
 		txtStartTime.setColumns(10);
 		
 		JLabel lblCallStart = new JLabel("Call Start:");
-		lblCallStart.setBounds(48, 86, 80, 22);
+		lblCallStart.setBounds(44, 135, 80, 22);
 		frame.getContentPane().add(lblCallStart);
 		
 		txtEndTime = new JTextField();
-		txtEndTime.setBounds(15, 166, 146, 22);
+		txtEndTime.setBounds(11, 211, 146, 22);
 		frame.getContentPane().add(txtEndTime);
 		txtEndTime.setColumns(10);
 		
 		JLabel lblCallEnd = new JLabel("Call End:");
-		lblCallEnd.setBounds(57, 143, 62, 22);
+		lblCallEnd.setBounds(53, 182, 62, 22);
 		frame.getContentPane().add(lblCallEnd);
 		
 		txtNote = new JTextField();
-		txtNote.setBounds(15, 226, 146, 70);
+		txtNote.setBounds(11, 265, 146, 70);
 		frame.getContentPane().add(txtNote);
 		txtNote.setColumns(10);
 		
 		JLabel lblNotes = new JLabel("Notes:");
-		lblNotes.setBounds(57, 195, 62, 28);
+		lblNotes.setBounds(53, 234, 62, 28);
 		frame.getContentPane().add(lblNotes);
 		
 		
 		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setBounds(191, 42, 452, 295);
+		scrollPane.setBounds(191, 66, 554, 324);
 		frame.getContentPane().add(scrollPane);
 		
 		table = new JTable();
+		table.setLocation(78, 0);
 		table.setFillsViewportHeight(true);
 		scrollPane.setViewportView(table);
 		
 		JButton btnSubmit = new JButton("Submit");
-		btnSubmit.setBounds(36, 309, 97, 25);
+		btnSubmit.setBounds(36, 348, 97, 25);
 		frame.getContentPane().add(btnSubmit);
+		
+		textField = new JTextField();
+		textField.setBounds(389, 35, 242, 22);
+		frame.getContentPane().add(textField);
+		textField.setColumns(10);
+		
+		JLabel lblSearch = new JLabel("Search:");
+		lblSearch.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		lblSearch.setBounds(323, 37, 62, 16);
+		frame.getContentPane().add(lblSearch);
 		
 		JMenuBar menuBar = new JMenuBar();
 		frame.setJMenuBar(menuBar);
