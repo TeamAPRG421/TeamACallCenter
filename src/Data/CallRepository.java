@@ -73,5 +73,71 @@ public class CallRepository {
 			return false;
 		}
 	}
+	
+	public static ArrayList<Caller> FindByNote(String searchCriteria)
+	{
+		ArrayList<Caller> collection = new ArrayList<>();
+		try{
+			
+			
+			Class.forName("org.sqlite.JDBC");
+			connection = DriverManager.getConnection("jdbc:sqlite:Contacts.sqlite3");
+			
+			statement = connection.createStatement();
+			resultSet = statement.executeQuery("SELECT * FROM 'main'.Log WHERE Note LIKE '%" + searchCriteria + "%'");
+			
+			while(resultSet.next())
+			{
+				Caller c = new Caller();
+				c.setID(Integer.parseInt(resultSet.getString("id")));
+				c.setCustomerName(resultSet.getString("CustomerName"));
+				c.setStartTime(resultSet.getDate("StartTime"));
+				c.setEndTime(resultSet.getDate("EndTime"));
+				c.setNote(resultSet.getString("Note"));
+				
+				collection.add(c);
+			}
+			
+			
+		}catch(Exception e)
+		{
+			
+		}
+		
+		return collection;
+	}
+	
+	public static ArrayList<Caller> FindByTime(int durationMin)
+	{
+		ArrayList<Caller> collection = new ArrayList<>();
+		try{
+			
+			
+			Class.forName("org.sqlite.JDBC");
+			connection = DriverManager.getConnection("jdbc:sqlite:Contacts.sqlite3");
+			
+			statement = connection.createStatement();
+			resultSet = statement.executeQuery("SELECT * FROM 'main'.Log WHERE ((EndTime - StartTime)/60) = " + durationMin);
+			
+			while(resultSet.next())
+			{
+				Caller c = new Caller();
+				c.setID(Integer.parseInt(resultSet.getString("id")));
+				c.setCustomerName(resultSet.getString("CustomerName"));
+				c.setStartTime(resultSet.getDate("StartTime"));
+				c.setEndTime(resultSet.getDate("EndTime"));
+				c.setNote(resultSet.getString("Note"));
+				
+				collection.add(c);
+			}
+			
+			
+		}catch(Exception e)
+		{
+			
+		}
+		
+		return collection;
+	}
 
 }
