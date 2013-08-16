@@ -16,10 +16,10 @@ public class CallRepository {
 			
 			
 			Class.forName("org.sqlite.JDBC");
-			connection = DriverManager.getConnection("jdbc:sqlite:Contacts.sqlite3");
+			connection = DriverManager.getConnection("jdbc:sqlite:CallCenter.db");
 			
 			statement = connection.createStatement();
-			resultSet = statement.executeQuery("SELECT * FROM 'main'.Log");
+			resultSet = statement.executeQuery("SELECT * FROM 'main'.'Log'");
 			
 			while(resultSet.next())
 			{
@@ -28,7 +28,7 @@ public class CallRepository {
 				c.setCustomerName(resultSet.getString("CustomerName"));
 				c.setStartTime(resultSet.getDate("StartTime"));
 				c.setEndTime(resultSet.getDate("EndTime"));
-				c.setNote(resultSet.getString("Note"));
+				c.setNote(resultSet.getString("Notes"));
 				
 				collection.add(c);
 			}
@@ -36,7 +36,7 @@ public class CallRepository {
 			
 		}catch(Exception e)
 		{
-			
+			e.printStackTrace();
 		}
 		
 		return collection;
@@ -48,7 +48,7 @@ public class CallRepository {
 			
 			
 			Class.forName("org.sqlite.JDBC");
-			connection = DriverManager.getConnection("jdbc:sqlite:Contacts.sqlite3");
+			connection = DriverManager.getConnection("jdbc:sqlite:CallCenter.db");
 			
 			statement = connection.createStatement();
 			
@@ -81,7 +81,7 @@ public class CallRepository {
 			
 			
 			Class.forName("org.sqlite.JDBC");
-			connection = DriverManager.getConnection("jdbc:sqlite:Contacts.sqlite3");
+			connection = DriverManager.getConnection("jdbc:sqlite:CallCenter.db");
 			
 			statement = connection.createStatement();
 			resultSet = statement.executeQuery("SELECT * FROM 'main'.Log WHERE Note LIKE '%" + searchCriteria + "%'");
@@ -114,7 +114,7 @@ public class CallRepository {
 			
 			
 			Class.forName("org.sqlite.JDBC");
-			connection = DriverManager.getConnection("jdbc:sqlite:Contacts.sqlite3");
+			connection = DriverManager.getConnection("jdbc:sqlite:Contacts.db");
 			
 			statement = connection.createStatement();
 			resultSet = statement.executeQuery("SELECT * FROM 'main'.Log WHERE ((EndTime - StartTime)/60) = " + durationMin);
