@@ -130,5 +130,14 @@ public class Start {
 			}
 		});
 		mnFile.add(mntmExit);
+		
+		JMenu mnDatabase = new JMenu("Database");
+		menuBar.add(mnDatabase);
+		
+		JMenuItem mntmLoad = new JMenuItem("Load");
+		mnDatabase.add(mntmLoad);
+		
+		JMenuItem mntmSaveItems = new JMenuItem("Save Items");
+		mnDatabase.add(mntmSaveItems);
 	}
 }
