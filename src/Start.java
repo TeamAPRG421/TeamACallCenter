@@ -15,6 +15,8 @@ import javax.swing.JButton;
 import javax.swing.table.DefaultTableModel;
 
 import java.awt.Font;
+import java.util.ArrayList;
+
 import logic.*;
 import Data.*;
 
@@ -28,6 +30,7 @@ public class Start {
 	private JTextField txtNote;
 	private JTable table;
 	private JTextField textField;
+	private ArrayList<Caller> collection;
 
 	/**
 	 * Launch the application.
@@ -57,7 +60,7 @@ public class Start {
 	 */
 	private void initialize() {
 		
-		
+		collection = new ArrayList<Caller>();
 		DefaultTableModel model = Util.CreateTableHeader(
 				new String[]{"id", "Customer Name","Start Time","End Time", "Note"}
 			);
